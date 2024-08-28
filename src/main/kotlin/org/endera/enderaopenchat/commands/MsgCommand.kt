@@ -1,4 +1,4 @@
-package org.endera.enderaopenchat
+package org.endera.enderaopenchat.commands
 
 import org.bukkit.Bukkit
 import org.bukkit.command.Command
@@ -7,6 +7,7 @@ import org.bukkit.command.CommandSender
 import org.endera.enderalib.adventure.stringToComponent
 import org.endera.enderalib.utils.checkPermission
 import org.endera.enderaopenchat.config.config
+import org.endera.enderaopenchat.utils.cparse
 
 class MsgCommand : CommandExecutor {
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<out String>): Boolean {

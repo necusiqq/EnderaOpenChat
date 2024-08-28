@@ -5,9 +5,12 @@ import org.bukkit.plugin.java.JavaPlugin
 import org.endera.enderalib.utils.async.BukkitDispatcher
 import org.endera.enderalib.utils.configuration.PluginException
 import org.endera.enderalib.utils.configuration.configLoadCreationHandler
+import org.endera.enderaopenchat.commands.MsgCommand
 import org.endera.enderaopenchat.config.ConfigScheme
 import org.endera.enderaopenchat.config.configFile
 import org.endera.enderaopenchat.config.defaultConfig
+import org.endera.enderaopenchat.listeners.ChatListener
+import org.endera.enderaopenchat.listeners.LeaveJoinListener
 import java.io.File
 import java.util.logging.Logger
 

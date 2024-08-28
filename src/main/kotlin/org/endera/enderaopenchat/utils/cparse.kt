@@ -1,4 +1,4 @@
-package org.endera.enderaopenchat
+package org.endera.enderaopenchat.utils
 
 import net.kyori.adventure.text.Component
 import org.endera.enderalib.adventure.stringToComponent

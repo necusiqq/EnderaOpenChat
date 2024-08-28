@@ -1,4 +1,4 @@
-package org.endera.enderaopenchat
+package org.endera.enderaopenchat.listeners
 
 import io.papermc.paper.event.player.AsyncChatEvent
 import kotlinx.coroutines.runBlocking
@@ -10,6 +10,7 @@ import org.bukkit.event.EventPriority
 import org.bukkit.event.Listener
 import org.endera.enderalib.adventure.componentToString
 import org.endera.enderalib.adventure.stringToComponent
+import org.endera.enderaopenchat.bukkitDispatcher
 import org.endera.enderaopenchat.config.config
 
 
