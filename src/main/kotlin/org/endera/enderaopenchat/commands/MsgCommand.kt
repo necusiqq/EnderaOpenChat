@@ -31,7 +31,7 @@ class MsgCommand : CommandExecutor {
             sender.sendMessage(
                 config.personalMessages.format
                     .replace("{sender}","Я")
-                    .replace("{target}", targetPlayerName)
+                    .replace("{target}", targetPlayer.name)
                     .replace("{message}", message)
                     .stringToComponent()
             )
@@ -42,6 +42,10 @@ class MsgCommand : CommandExecutor {
                     .replace("{message}", message)
                     .stringToComponent()
             )
+
+            if (config.personalMessages.sound.isNotBlank()) {
+                targetPlayer.playSound(targetPlayer.location, config.personalMessages.sound, config.personalMessages.volume, config.personalMessages.pitch)
+            }
         }
         return true
     }

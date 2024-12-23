@@ -25,7 +25,7 @@ dependencies {
 
     // Local Lib
 //    implementation("org.endera.enderalib:enderalib:1.0-SNAPSHOT")
-    implementation("com.github.Turbovadim:EnderaLib:1.0.1")
+    implementation("com.github.Turbovadim:EnderaLib:1.3.0")
 }
 
 tasks.jar {

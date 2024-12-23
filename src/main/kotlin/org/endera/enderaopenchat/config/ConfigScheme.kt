@@ -7,18 +7,19 @@ data class ConfigScheme(
     val localChat: LocalChat,
     val globalChat: GlobalChat,
     val personalMessages: Msg,
-    val customLeaveJoin: CustomLeaveJoin,
+    val customLeaveJoinDeath: CustomLeaveJoinDeath,
     val messages: Messages
 )
 
 @Serializable
-data class CustomLeaveJoin(
-    val joinMessage: LeaveJoinMessage,
-    val leaveMessage: LeaveJoinMessage,
+data class CustomLeaveJoinDeath(
+    val joinMessage: LeaveJoinDeathMessage,
+    val leaveMessage: LeaveJoinDeathMessage,
+    val deathMessage: LeaveJoinDeathMessage,
 )
 
 @Serializable
-data class LeaveJoinMessage(
+data class LeaveJoinDeathMessage(
     val enabled: Boolean,
     val message: String,
 )
@@ -38,11 +39,15 @@ data class GlobalChat(
 @Serializable
 data class Msg(
     val format: String,
+    val sound: String,
+    val volume: Float,
+    val pitch: Float,
 )
 
 @Serializable
 data class Messages(
     val prefix: String,
+    val reload: String,
     val usage: Usage,
     val playernotfound: String,
 )

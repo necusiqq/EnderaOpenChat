@@ -1,7 +1,7 @@
 name: EnderaOpenChat
 version: ${projectVersion}
 main: org.endera.enderaopenchat.EnderaOpenChat
-description: Обычный плагин на чат, разработанный абобиками из Endera
+description: Simple and stable chat plugin
 authors: [TurboVadim, Sculmix]
 website: https://bisquit.host
 api-version: '1.18'
@@ -13,10 +13,12 @@ softdepend:
   - DiscordSRV
 commands:
   enderachat:
-    description: "Базовая команда"
+    description: "Base command"
     usage: "/enderachat <arg>"
+    aliases:
+      - echat
   msg:
-    description: "Отправить личное сообщение"
+    description: "Send personal message"
     usage: "/msg <arg>"
     aliases:
       - m
