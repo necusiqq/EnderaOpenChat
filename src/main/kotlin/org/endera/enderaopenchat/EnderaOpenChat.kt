@@ -5,6 +5,7 @@ import org.bukkit.plugin.java.JavaPlugin
 import org.endera.enderalib.utils.async.BukkitDispatcher
 import org.endera.enderalib.utils.configuration.PluginException
 import org.endera.enderalib.utils.configuration.configLoadCreationHandler
+import org.endera.enderaopenchat.bstats.MetricsLite
 import org.endera.enderaopenchat.commands.MsgCommand
 import org.endera.enderaopenchat.commands.ReloadCommand
 import org.endera.enderaopenchat.config.ConfigScheme
@@ -23,6 +24,7 @@ class EnderaOpenChat : JavaPlugin() {
 
     override fun onEnable() {
         plugin = this
+        val metrics = MetricsLite(this, 24253)
         bukkitDispatcher = BukkitDispatcher(this)
         configFile = File("${dataFolder}/config.yml")
         rlogger = logger
