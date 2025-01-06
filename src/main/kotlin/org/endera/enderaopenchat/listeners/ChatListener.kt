@@ -10,14 +10,20 @@ import org.bukkit.event.EventPriority
 import org.bukkit.event.Listener
 import org.endera.enderalib.adventure.componentToString
 import org.endera.enderalib.adventure.stringToComponent
+import org.endera.enderalib.isFolia
+import org.endera.enderalib.utils.async.BukkitRegionDispatcher
 import org.endera.enderaopenchat.bukkitDispatcher
 import org.endera.enderaopenchat.config.config
+import org.endera.enderaopenchat.plugin
 
 
 class ChatListener : Listener {
 
     @EventHandler(priority = EventPriority.LOWEST, ignoreCancelled = true)
     fun onPlayerChatSent(event: AsyncChatEvent) {
+
+        val bukkitRegionDispatcher = BukkitRegionDispatcher(plugin, event.player.location)
+
         runBlocking {
             val player = event.player
             val stringMessage = event.message().componentToString()
@@ -38,9 +44,14 @@ class ChatListener : Listener {
             }
 
             // LOCAL CHAT HERE
-
-            val nearbyPlayers = withContext(bukkitDispatcher) {
-                player.location.getNearbyPlayers(config.localChat.range.toDouble())
+            val nearbyPlayers = if(isFolia) {
+                withContext(bukkitRegionDispatcher) {
+                    player.location.getNearbyPlayers(config.localChat.range.toDouble())
+                }
+            } else {
+                withContext(bukkitDispatcher) {
+                    player.location.getNearbyPlayers(config.localChat.range.toDouble())
+                }
             }
 
             event.viewers().clear()
