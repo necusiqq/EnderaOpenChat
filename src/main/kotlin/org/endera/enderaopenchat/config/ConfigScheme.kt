@@ -8,7 +8,8 @@ data class ConfigScheme(
     val globalChat: GlobalChat,
     val personalMessages: Msg,
     val customLeaveJoinDeath: CustomLeaveJoinDeath,
-    val messages: Messages
+    val discordSrv: DiscordSrv,
+    val messages: Messages,
 )
 
 @Serializable
@@ -16,6 +17,11 @@ data class CustomLeaveJoinDeath(
     val joinMessage: LeaveJoinDeathMessage,
     val leaveMessage: LeaveJoinDeathMessage,
     val deathMessage: LeaveJoinDeathMessage,
+)
+
+@Serializable
+data class DiscordSrv(
+    val sendMessagesFromLocalChat: Boolean
 )
 
 @Serializable

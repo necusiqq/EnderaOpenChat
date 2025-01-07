@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "org.endera"
-version = "1.0.1"
+version = "1.0.2"
 
 repositories {
     mavenCentral()
@@ -13,6 +13,7 @@ repositories {
         name = "papermc"
         url = uri("https://repo.papermc.io/repository/maven-public/")
     }
+    maven("https://nexus.scarsz.me/content/groups/public/")
     maven("https://repo.extendedclip.com/content/repositories/placeholderapi/")
     maven("https://jitpack.io")
     maven("https://nexus.scarsz.me/content/groups/public/")
@@ -20,6 +21,7 @@ repositories {
 
 dependencies {
     compileOnly("dev.folia:folia-api:1.20.4-R0.1-SNAPSHOT")
+    compileOnly("com.discordsrv:discordsrv:1.29.0")
     compileOnly("me.clip:placeholderapi:2.11.6")
     compileOnly("net.kyori:adventure-text-minimessage:4.16.0")
     compileOnly("com.discordsrv:discordsrv:1.28.0")

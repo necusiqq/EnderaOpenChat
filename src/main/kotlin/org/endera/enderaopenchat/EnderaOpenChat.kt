@@ -1,6 +1,9 @@
 package org.endera.enderaopenchat
 
+import discordsrv.DiscordSRVListener
+import github.scarsz.discordsrv.DiscordSRV
 import org.bukkit.Bukkit
+import org.bukkit.plugin.Plugin
 import org.bukkit.plugin.java.JavaPlugin
 import org.endera.enderalib.utils.async.BukkitDispatcher
 import org.endera.enderalib.utils.configuration.PluginException
@@ -22,8 +25,22 @@ lateinit var bukkitDispatcher: BukkitDispatcher
 
 class EnderaOpenChat : JavaPlugin() {
 
+    val discordsrvListener = DiscordSRVListener(this)
+    var discordSRV: Plugin? = null
+
+
     override fun onEnable() {
         plugin = this
+
+        val discordSRV = Bukkit.getPluginManager().getPlugin("DiscordSRV")
+
+
+        if (discordSRV != null) {
+            DiscordSRV.api.subscribe(discordsrvListener)
+        } else {
+            logger.severe("DiscordSRV is not installed, skipping initialization.")
+        }
+
         val metrics = MetricsLite(this, 24253)
         bukkitDispatcher = BukkitDispatcher(this)
         configFile = File("${dataFolder}/config.yml")
@@ -49,5 +66,13 @@ class EnderaOpenChat : JavaPlugin() {
 
         getCommand("msg")?.setExecutor(MsgCommand())
         getCommand("enderachat")?.setExecutor(ReloadCommand())
+    }
+
+    override fun onDisable() {
+        if (discordSRV != null) {
+            DiscordSRV.api.unsubscribe(discordsrvListener)
+        } else {
+            logger.severe("DiscordSRV is not installed, skipping initialization.")
+        }
     }
 }

@@ -20,6 +20,7 @@ import java.util.*
 import java.util.logging.Level
 import java.util.zip.GZIPOutputStream
 import javax.net.ssl.HttpsURLConnection
+import kotlin.Throws
 
 class MetricsLite(plugin: Plugin, pluginId: Int) {
     val isEnabled: Boolean

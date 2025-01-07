@@ -29,6 +29,9 @@ val defaultConfig = ConfigScheme(
             message = "<gray>[<red>☠<gray>] <white>{player} has died"
         ),
     ),
+    discordSrv = DiscordSrv(
+        sendMessagesFromLocalChat = false
+    ),
     messages = Messages(
         prefix = "<green>[EChat]<reset>",
         reload = "{prefix} Plugin configuration reloaded",
